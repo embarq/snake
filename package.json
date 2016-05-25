@@ -1,0 +1,8 @@
+{
+	"name": "Snake",
+  "devDependencies": {
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-browserify": "*"
+  }
+}

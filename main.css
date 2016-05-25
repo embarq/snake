@@ -1,0 +1,33 @@
+body {
+	display: flex;
+	background-color: #f8f8f8;
+	width: 500px;
+	font-size: 1.2em;
+	font-family: consolas;
+}
+
+aside {
+	margin-left: 5%;
+}
+
+input {
+	margin: 5% 0;
+}
+
+[type=number] {
+	width: 40px;
+	font-size: 1em;
+	margin-left: 10%;
+	border: none;
+	background-color: inherit;
+}
+
+canvas {
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.score {
+	display: flex;
+	align-items: center;
+}
