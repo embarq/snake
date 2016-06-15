@@ -1,8 +1,25 @@
 {
-	"name": "Snake",
+  "name": "snake",
   "devDependencies": {
-    "browser-sync": "*",
-    "gulp": "*",
-    "gulp-browserify": "*"
-  }
+    "webpack": "^1.13.1"
+  },
+  "version": "0.1.0",
+  "description": "Classic \"Snake\" game",
+  "main": "scripts/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/embarq/snake.git"
+  },
+  "keywords": [
+    "snake",
+    "js",
+    "es6",
+    "webpack"
+  ],
+  "author": "emb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/embarq/snake/issues"
+  },
+  "homepage": "https://github.com/embarq/snake#readme"
 }

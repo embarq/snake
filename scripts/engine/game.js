@@ -1,32 +1,38 @@
 "use strict";
+const Score = require("./score");
+const Snake = require("./../models/snake");
+const Food  = require("./../models/food");
 
-let rand = (min, max) => Math.abs(Math.floor(Math.random() * (max - min)) - min);
+module.exports = class Game {
+	constructor(config) {
+		for(var prop in config) {
+			if (config.hasOwnProperty(prop)) {
+				if (config[prop] == null) {
+					throw new ReferenceError("${prop} must be present(in config object)");
+					return null;
+				}
+			}
+		}
 
-class Game {
-	constructor(cnv, gridSize) {
-		this.cnv = cnv;
-		this.drawContext = this.cnv.getContext('2d');
+		this.config = config;
+
 		this.foodConfig = {
-			position: {
-				x: rand(1, this.cnv.width / gridSize - 2),
-				y: rand(1, this.cnv.height / gridSize - 2)
-			},
+			position: null,
 			color: {
 				stroke: "#9C2",
 				fill: "#3C2"
-			},
-			drawContext: this.drawContext,
-			gridSize: gridSize
+			}
 		};
 
 		this.snakeConfig = {
-			position: null,
+			position: {
+				x: 1,
+				y: 1
+			},
 			color: {
 				stroke: "#C32",
 				fill: "#F55"				
 			},
-			drawContext: this.drawContext,
-			gridSize: gridSize,
 			owner: this
 		};
 
@@ -46,7 +52,7 @@ class Game {
 	}
 
 	tick() {
-		this.drawContext.clearRect(0, 0, this.cnv.width, this.cnv.height);
+		ctx.clearRect(0, 0, cnv.width, cnv.height);
 		if (this.snake.moveto(this.food)) {
 			this.food = new Food(this.foodConfig);
 			this.score.update();

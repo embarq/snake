@@ -1,8 +1,8 @@
 "use strict";
-class Snake extends Entity {
-	constructor(cfg) {
-		super(cfg);
-		this.owner = cfg.owner;
+module.exports = class Snake extends Entity {
+	constructor(config, appConfig) {
+		super(config, appConfig);
+		this.owner = config.owner;
 		this.direction = 'r';
 		this.body = [];
 
@@ -14,12 +14,12 @@ class Snake extends Entity {
 		};
 	}
 
-	// Select fisrt element, increse it by current direction,
+	// Select fisrt element, increse it by following direction,
 	// check if it collides anything,
 	// check if it's location equals food location
 	// copy it and push-front to body  
 	moveto(target) {
-		let head = Object.assign({}, this.body[0]),	// 1, 2, 3
+		let head = Object.assign({}, this.body[0]),
 			tail = {},
 			success = false;
 
@@ -48,14 +48,12 @@ class Snake extends Entity {
 		return point.x == -1 || point.y == -1 ||
 			point.y == cnv.height / gridSize ||
 			point.x == cnv.width / gridSize
-			|| (function(arr) {
-				console.log('this');
-				for (var i = arr.length - 1; i >= 0; i--) {
-					if (arr[i].x == point.x && arr[i].y == point.y) return true;
-				}
-				return false;
-			})(this.body);
-			// || this.body.some(item => item.x == point.x && item.y == point.y);
+			// || (function(arr) {
+			// 	for (var i = arr.length - 1; i >= 0; i--) {
+			// 		if (arr[i].x == point.x && arr[i].y == point.y) return true;
+			// 	}
+			// 	return false;
+			// })(this.body);
 	}
 
 	draw() {
@@ -68,9 +66,5 @@ class Snake extends Entity {
 		else if (key === 38 && this.direction !== "u") this.direction = "d";
 		else if (key === 39 && this.direction !== "l") this.direction = "r";
 		else if (key === 40 && this.direction !== "d") this.direction = "u";
-	}
-
-	print() {
-		console.log(this.body.map(item => `[${item.x}, ${item.y}]`));
 	}
 };

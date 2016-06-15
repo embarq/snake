@@ -1,8 +1,9 @@
 "use strict";
-class Score {
+module.exports = class Score {
 	constructor(elem) {
 		this.value = 0;
 		this.controller = elem;
+		this.controller.setAttribute('value', 0);
 	}
 
 	set updater(value) {
